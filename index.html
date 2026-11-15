@@ -1,753 +1,495 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eugenie Lin - Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: #2c3e50;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .lang-switch {
-    /* 移除固定定位，改隨導覽列移動 */
-    position: relative; 
-    background: #2c3e50;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    font-size: 0.85rem;
-    white-space: nowrap;
-}
-
-.lang-switch:hover {
-    background: #d4a574;
-    color: white;
-    transform: translateY(-2px);
-}
-
-        /* 1. 讓網頁跳轉變平滑 */
-html { scroll-behavior: smooth; }
-
-/* 2. 固定在頂部的導覽列樣式 */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    z-index: 2000;
-    padding: 15px 5%; /* 增加左右內距 */
-    display: flex;
-    justify-content: space-between; /* 讓連結靠左/中，按鈕靠右 */
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-.nav-side-left, .nav-side-right {
-    flex: 1;
-    display: flex;
-    align-items: center;
-}
-
-.nav-side-right {
-    justify-content: flex-end; /* 讓語言鈕靠右 */
-}
-.nav-links {
-    display: flex;
-    flex: 2;
-    text-align: center;
-    
-}
-.navbar a {
-    text-decoration: none;
-    color: #2c3e50;
-    white-space: nowrap;
-    margin: 0 15px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: 0.3s;
-}
-.navbar a:hover { color: #d4a574; }
-
-header {
-        display: flex;
-        align-items: flex-start; /* 改為頂部對齊，文字會更有層次感 */
-        justify-content: flex-start;
-        gap: 60px; /* 圖片與文字的間距 */
-        padding: 100px 40px 60px 40px;
-        max-width: 1100px;
-        margin: 0 auto;
-        scroll-margin-top: 100px;
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f0e8">
+  <meta name="description" content="Eugenie Lin — exploring the intersection of business, technology, and product thinking.">
+  <meta property="og:title" content="Eugenie Lin — Personal Portfolio">
+  <meta property="og:description" content="Business × Technology × Product">
+  <title>Eugenie Lin — Personal Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f4f0e8;
+      --paper-deep: #e9e2d6;
+      --ink: #292824;
+      --muted: #716d65;
+      --line: #d8d0c4;
+      --accent: #9a8066;
+      --white: #fffdf9;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "DM Sans", "Noto Sans TC", sans-serif;
+      --content: 1160px;
     }
-    .hero-title {
-    font-size: 2.2em;
-    color: #4a5f7f; /* 選一個穩重的藍灰色或妳喜歡的標題色 */
-    margin: 10px 0 20px 0;
-    line-height: 1.2;
-    font-weight: 800;
-    border-bottom: none; /* 移除預設 h2 的底線 */
-}
-
-    .profile-img {
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-    border: 8px solid white;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    /* 核心修改：增加這行內容 */
-    margin-top: 40px; 
-}
-
-    .header-text {
-        flex: 1;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
     }
-
-    .header-text h1 {
-        font-size: 3em;
-        margin-bottom: 20px;
-        color: #2c3e50;
-        opacity: 1; /* 取消原本的動畫或重新設定 */
-        animation: none; 
+    a { color: inherit; }
+    button { font: inherit; }
+    .shell { width: min(var(--content), calc(100% - 64px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(244,240,232,.94); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(41,40,36,.12);
     }
-
-    /* 手機版自動變回垂直排列 */
-    @media (max-width: 768px) {
-        header {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding-top: 120px;
-        }
-        .menu-toggle {
-            display: block !important; /* 顯示漢堡鈕 */
-        }
-
-        .nav-links {
-            display: none; /* 預設隱藏所有連結 */
-            flex-direction: column;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            padding: 20px 0;
-            box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-links.active {
-            display: flex; /* 點擊後顯示 */
-        }
-
-        .navbar a {
-            margin: 15px 0 !important;
-            font-size: 1.1rem;
-            width: 100%;
-            text-align: center;
-        }
-
-        .lang-switch {
-            margin-top: 10px;
-        }
+    .nav {
+      min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px;
     }
-    
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-        }
-
-        .section {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            margin: 30px 0;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            scroll-margin-top: 80px;
-        }
-
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
-        }
-
-        h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: #2c3e50;
-            border-bottom: 3px solid #d4a574;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .skill-card {
-            background: linear-gradient(135deg, #6a7a8c 0%, #4a5f7f 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 165, 116, 0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .skill-card:hover::before {
-            left: 100%;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-8px) scale(1.02);
-        }
-
-        .skill-card h3 {
-            margin-bottom: 10px;
-            font-size: 1.3em;
-        }
-
-        .skill-card ul {
-            list-style: none;
-            margin-top: 10px;
-        }
-
-        .skill-card li {
-            margin: 5px 0;
-            padding-left: 15px;
-            position: relative;
-        }
-
-        .skill-card li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: #d4a574;
-        }
-
-        .project-item {
-            background: #f8f9fa;
-            padding: 25px;
-            margin: 20px 0;
-            border-radius: 15px;
-            border-left: 4px solid #d4a574;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .project-item:hover {
-            background: #e8f0f8;
-            border-left-width: 8px;
-            transform: translateX(5px);
-        }
-
-        .project-item h3 {
-            color: #34495e;
-            margin-bottom: 10px;
-            font-size: 1.4em;
-        }
-
-        .project-link {
-            display: inline-block;
-            margin-top: 10px;
-            margin-right: 10px;
-            padding: 8px 20px;
-            background: #d4a574;
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            font-size: 0.9em;
-        }
-
-        .project-link:hover {
-            background: #c49563;
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(212, 165, 116, 0.4);
-        }
-
-        .contact-info {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 25px;
-            background: white;
-            border-radius: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: #2c3e50;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            background: #d4a574;
-            color: white;
-        }
-
-        .achievement {
-            display: flex;
-            align-items: start;
-            margin: 15px 0;
-            padding: 15px;
-            background: #fff;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .achievement:hover {
-            background: #f0f8ff;
-            transform: translateX(10px);
-        }
-
-        .achievement::before {
-            content: "✓";
-            color: #d4a574;
-            font-weight: bold;
-            font-size: 1.5em;
-            margin-right: 15px;
-        }
-
-        .education-item {
-            margin: 25px 0;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 12px;
-            border-left: 4px solid #d4a574;
-            transition: all 0.3s ease;
-        }
-
-        .education-item:hover {
-            background: #e8f0f8;
-            transform: translateX(5px);
-        }
-
-        .education-item h3 {
-            color: #34495e;
-            font-size: 1.3em;
-            margin-bottom: 8px;
-        }
-
-        .education-item .degree {
-            color: #5d6d7e;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .education-item .date {
-            color: #7f8c8d;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-        }
-
-        .education-item ul {
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-
-        .education-item li {
-            margin: 5px 0;
-            color: #34495e;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #7f8c8d;
-            font-size: 0.9em;
-        }
-
-  
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 4px;
-            background: linear-gradient(to right, #d4a574, #c49563);
-            transition: width 0.3s ease;
-            z-index: 1000;
-        }
-    </style>
+    .wordmark { text-decoration: none; font-weight: 700; letter-spacing: .08em; font-size: 13px; white-space: nowrap; }
+    .nav-right { display: flex; align-items: center; gap: 28px; }
+    .nav-links { display: flex; align-items: center; gap: 25px; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: .04em;
+      transition: color .2s ease;
+    }
+    .nav-links a:hover, .text-link:hover { color: var(--accent); }
+    .lang-switch {
+      border: 1px solid var(--ink); background: transparent; color: var(--ink);
+      padding: 7px 13px; border-radius: 2px; cursor: pointer; font-size: 11px;
+      letter-spacing: .08em; transition: background .2s ease, color .2s ease;
+    }
+    .lang-switch:hover { background: var(--ink); color: var(--paper); }
+    .menu-toggle { display: none; border: 0; background: none; color: var(--ink); font-size: 23px; cursor: pointer; }
+    .hero { padding: 92px 0 86px; border-bottom: 1px solid var(--line); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(250px,.7fr); gap: 70px; align-items: center; }
+    .eyebrow, .section-kicker, .meta, .project-number {
+      text-transform: uppercase; letter-spacing: .16em; font-size: 10px; font-weight: 600; color: var(--accent);
+    }
+    .hero h1 { font: 600 clamp(62px, 8vw, 112px)/.88 var(--serif); letter-spacing: -.045em; margin: 24px 0 20px; }
+    .hero h2 { font-size: clamp(17px, 2vw, 22px); line-height: 1.5; font-weight: 500; letter-spacing: -.02em; margin: 0 0 20px; }
+    .hero-copy { max-width: 620px; color: #5e5a53; font-size: 15px; line-height: 1.9; }
+    .hero-actions { display: flex; gap: 22px; align-items: center; margin-top: 30px; flex-wrap: wrap; }
+    .button-link {
+      display: inline-flex; align-items: center; gap: 12px; padding: 11px 17px;
+      background: var(--ink); color: var(--paper); text-decoration: none; font-size: 11px;
+      letter-spacing: .08em; transition: background .2s ease;
+    }
+    .button-link:hover { background: var(--accent); }
+    .text-link { text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 3px; font-size: 12px; transition: color .2s ease; }
+    .portrait-wrap { position: relative; max-width: 340px; justify-self: end; width: 100%; }
+    .portrait-wrap::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border: 1px solid var(--accent); }
+    .portrait { position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(.82); background: var(--paper-deep); }
+    .hero-note { margin-top: 30px; color: var(--muted); font: italic 17px var(--serif); }
+    .section { padding: 82px 0; border-bottom: 1px solid var(--line); }
+    .section-heading { display: grid; grid-template-columns: 190px 1fr; gap: 35px; margin-bottom: 42px; align-items: start; }
+    .section-heading h2 { font: 600 clamp(38px, 5vw, 58px)/.95 var(--serif); letter-spacing: -.025em; margin: 0; }
+    .section-intro { max-width: 650px; color: var(--muted); margin: 4px 0 0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 58px; }
+    .about-grid p { margin: 0 0 17px; max-width: 590px; }
+    .about-aside { border-left: 1px solid var(--line); padding-left: 28px; color: var(--muted); }
+    .about-aside strong { display: block; color: var(--ink); font: 600 25px/1.2 var(--serif); margin-bottom: 8px; }
+    .audience-links { display: flex; gap: 28px; margin-top: 25px; flex-wrap: wrap; }
+    .audience-links a { text-decoration: none; font-size: 12px; border-bottom: 1px solid var(--accent); padding-bottom: 5px; }
+    .projects-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .project-card { background: var(--paper); padding: 29px 30px 32px; min-height: 240px; display: flex; flex-direction: column; }
+    .project-card.featured { grid-column: 1 / -1; min-height: 270px; background: var(--white); }
+    .project-top { display: flex; justify-content: space-between; gap: 15px; align-items: center; }
+    .project-type { color: var(--muted); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .project-card h3 { font: 600 32px/1.05 var(--serif); margin: 25px 0 12px; letter-spacing: -.015em; }
+    .project-card p { max-width: 620px; color: var(--muted); margin: 0 0 25px; font-size: 13px; }
+    .project-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: auto; }
+    .tags { display: flex; gap: 7px; flex-wrap: wrap; }
+    .tag { border: 1px solid var(--line); color: var(--muted); padding: 4px 8px; font-size: 9px; letter-spacing: .05em; }
+    .project-link { font-size: 11px; text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 3px; white-space: nowrap; }
+    .timeline { border-top: 1px solid var(--line); }
+    .timeline-item { display: grid; grid-template-columns: 190px minmax(0,1fr); gap: 35px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+    .timeline-date { color: var(--muted); font-size: 11px; letter-spacing: .05em; padding-top: 5px; }
+    .timeline-content h3 { font: 600 28px/1.1 var(--serif); margin: 0 0 4px; }
+    .timeline-content .role { font-size: 12px; color: var(--accent); margin-bottom: 12px; }
+    .timeline-content ul { margin: 0; padding-left: 17px; color: var(--muted); font-size: 13px; }
+    .timeline-content li { padding: 3px 0; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 30px; }
+    .skill { border-top: 1px solid var(--ink); padding-top: 15px; }
+    .skill h3 { font: 600 25px var(--serif); margin: 0 0 12px; }
+    .skill p { color: var(--muted); font-size: 13px; margin: 0; }
+    .skill .tools { margin-top: 13px; color: var(--ink); font-size: 11px; line-height: 2; }
+    .education-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 28px; }
+    .education-card { border-top: 1px solid var(--ink); padding-top: 17px; }
+    .education-card h3 { font: 600 25px/1.1 var(--serif); margin: 0 0 8px; }
+    .education-card p { color: var(--muted); font-size: 12px; margin: 4px 0; }
+    .education-card .gpa { color: var(--ink); margin-top: 12px; }
+    .extras-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .extra { border-top: 1px solid var(--ink); padding-top: 15px; }
+    .extra h3 { font: 600 27px var(--serif); margin: 0 0 8px; }
+    .extra p { color: var(--muted); font-size: 13px; margin: 0 0 13px; }
+    .cert-row { display: flex; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--line); padding: 13px 0; font-size: 12px; }
+    .cert-row span:last-child { color: var(--muted); text-align: right; }
+    .contact-section { background: var(--ink); color: var(--paper); padding: 78px 0; }
+    .contact-section .section-kicker { color: #c5ad91; }
+    .contact-grid { display: flex; justify-content: space-between; align-items: end; gap: 30px; }
+    .contact-section h2 { font: 600 clamp(48px,7vw,82px)/.9 var(--serif); margin: 18px 0; letter-spacing: -.03em; }
+    .contact-section p { color: #c9c3b9; max-width: 480px; font-size: 13px; }
+    .contact-links { display: flex; flex-direction: column; gap: 12px; min-width: 210px; }
+    .contact-links a { color: var(--paper); text-decoration: none; font-size: 12px; border-bottom: 1px solid #706d65; padding-bottom: 7px; }
+    footer { padding: 22px 0; color: var(--muted); font-size: 10px; letter-spacing: .06em; display: flex; justify-content: space-between; gap: 20px; }
+    @media (max-width: 800px) {
+      .shell { width: min(100% - 40px, var(--content)); }
+      .nav { min-height: 64px; }
+      .nav-right { gap: 14px; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none; position: absolute; top: 64px; left: 0; right: 0; padding: 20px;
+        background: var(--paper); border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; gap: 17px;
+      }
+      .nav-links.open { display: flex; }
+      .hero { padding: 60px 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 42px; }
+      .portrait-wrap { justify-self: start; max-width: 250px; }
+      .section { padding: 62px 0; }
+      .section-heading { grid-template-columns: 1fr; gap: 13px; margin-bottom: 30px; }
+      .about-grid, .extras-grid { grid-template-columns: 1fr; gap: 25px; }
+      .about-aside { border-left: 0; border-top: 1px solid var(--line); padding: 20px 0 0; }
+      .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+      .skills-grid, .education-grid { grid-template-columns: 1fr; gap: 28px; }
+      .contact-grid { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 560px) {
+      .shell { width: calc(100% - 36px); }
+      .hero h1 { font-size: 68px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-column: auto; }
+      .project-card { padding: 24px 20px; }
+      .project-card h3 { font-size: 29px; }
+      .project-bottom { align-items: flex-start; flex-direction: column; }
+      .audience-links { gap: 17px; }
+      footer { flex-direction: column; gap: 5px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
 </head>
 <body>
-    <div class="scroll-indicator" id="scrollIndicator"></div>
-    <nav class="navbar">
-    <div class="nav-side-left">
-        <div style="font-weight: bold; font-size: 1.2rem;">Eugenie Lin</div>
-    </div>
-    
-    <div class="nav-links" id="navLinks">
-        <a href="#about" data-zh="關於我" data-en="About Me">關於我</a>
-        <a href="#projects" data-zh="精選專案" data-en="Projects">精選專案</a>
-        <a href="#skills" data-zh="技能" data-en="Skills">技能</a>
-        <a href="#certifications" data-zh="證照" data-en="Certifications">證照</a>
-        <a href="#experience" data-zh="經驗活動" data-en="Experience">經驗活動</a>
-        <a href="#education" data-zh="教育背景" data-en="Education">學歷</a>
-        <a href="#contact" data-zh="聯絡我" data-en="Contact">聯絡我</a>
-    </div>
+  <div class="topbar">
+    <nav class="nav shell" aria-label="Main navigation">
+      <a class="wordmark" href="#home">EUGENIE LIN</a>
+      <div class="nav-right">
+        <div class="nav-links" id="navLinks">
+          <a href="#about" data-en="About" data-zh="關於我">About</a>
+          <a href="#work" data-en="Selected Work" data-zh="精選作品">Selected Work</a>
+          <a href="#experience" data-en="Experience" data-zh="工作經歷">Experience</a>
+          <a href="#education" data-en="Education" data-zh="學歷">Education</a>
+          <a href="#contact" data-en="Contact" data-zh="聯絡方式">Contact</a>
+        </div>
+        <button class="lang-switch" id="langSwitch" type="button" aria-label="Switch language">中文</button>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </nav>
+  </div>
 
-    <div class="nav-side-right">
-        <div class="lang-switch" id="langSwitch">English</div>
-        <div class="menu-toggle" id="mobile-menu" style="display: none;">☰</div>
-    </div>
-</nav>
-</nav>
-    <div class="lang-switch" id="langSwitch">English</div>
-    
-    <div class="container">
-        <header>
-    <img src="https://eugenielin.github.io/portfolio/IMG_9244.JPG" alt="Eugenie Lin" class="profile-img" id="profileImg">
-    
-   <!-- 1. About Me --> 
-    <div class="header-text">
-        <p style="color: #d4a574; font-weight: bold; letter-spacing: 2px; margin-bottom: 10px;">ABOUT ME</p>
-        <h1>Eugenie Lin</h1>
-        <h2 class="hero-title" id="heroTitle" 
-    data-zh="跨領域整合者｜企管背景 x 工程思維" 
-    data-en="Cross-functional Integrator | 
-    <br>Business Logic x Engineering Mindset">
-    跨領域整合者｜企管背景 x 工程思維
-</h2>
-        <div id="aboutContent">
-                <p style="font-size: 1.1em; margin-top: 20px; line-height: 1.8;">
-                    我是一位企管系的應屆畢業生，具備完整工程訓練與實務專案經驗，擅長在資訊複雜或跨部門合作的情境中，快速釐清問題、整理重點，並協助團隊將想法落實為可執行的行動。
-                </p>
-                <p style="font-size: 1.1em; margin-top: 15px; line-height: 1.8;">
-                    過去在 HRnetOne 與國泰資訊培訓班中，我多半扮演「整合者」的角色，負責整理需求、追蹤進度、對齊不同利害關係人的理解，並透過 Excel、Notion 等工具提升流程透明度與執行效率。
-                </p>
-                <p style="font-size: 1.1em; margin-top: 15px; line-height: 1.8;">
-                    我對資料背後的邏輯、流程是否順暢，以及決策如何影響使用者與營運結果特別有興趣，也樂於在實作中學習新工具與新領域。
-                </p>
+  <main>
+    <header class="hero" id="home">
+      <div class="shell hero-grid">
+        <div>
+          <div class="eyebrow" data-en="PERSONAL PORTFOLIO · TAIPEI, TAIWAN" data-zh="個人作品集 · 台灣台北">PERSONAL PORTFOLIO · TAIPEI, TAIWAN</div>
+          <h1>Eugenie<br>Lin<span style="color:var(--accent)">.</span></h1>
+          <h2 data-en="Business × Technology × Product" data-zh="商業 × 科技 × 產品">Business × Technology × Product</h2>
+          <p class="hero-copy" data-en="I’m interested in how business needs, technology, and everyday user experiences come together. My work and projects have taken me from business operations and IT training to technology consulting, while continuing to shape how I think about products and problem-solving." data-zh="我對商業需求、科技應用與使用者體驗如何交會很感興趣。從商業營運、資訊培訓到科技顧問工作，不同經驗逐漸形塑了我對產品與問題解決的思考方式。">I’m interested in how business needs, technology, and everyday user experiences come together. My work and projects have taken me from business operations and IT training to technology consulting, while continuing to shape how I think about products and problem-solving.</p>
+          <div class="hero-actions">
+            <a class="button-link" href="#work"><span data-en="EXPLORE MY WORK" data-zh="探索我的作品">EXPLORE MY WORK</span><span>↗</span></a>
+            <a class="text-link" href="#experience" data-en="Professional experience" data-zh="工作經歷">Professional experience</a>
+          </div>
+          <div class="hero-note" data-en="Curious by nature. Practical by design." data-zh="保持好奇，也重視實際落地。">Curious by nature. Practical by design.</div>
+        </div>
+        <div class="portrait-wrap">
+          <img class="portrait" src="https://eugenielin.github.io/portfolio/IMG_9244.JPG" alt="Portrait of Eugenie Lin">
+        </div>
+      </div>
+    </header>
+
+    <section class="section" id="about">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="section-kicker">01 / ABOUT</div>
+          <div>
+            <h2 data-en="A little about<br>how I think." data-zh="關於我，<br>以及我的思考方式。">A little about<br>how I think.</h2>
+            <p class="section-intro" data-en="A business background, a growing understanding of technology, and an interest in making complex things easier to use and act on." data-zh="以商管為起點，持續累積科技理解，也關注如何讓複雜的事情更容易被理解與執行。">A business background, a growing understanding of technology, and an interest in making complex things easier to use and act on.</p>
+          </div>
+        </div>
+        <div class="about-grid">
+          <div>
+            <p data-en="I studied Business Administration at Soochow University. Along the way, I became curious about what happens behind business decisions: how systems work, how information moves, and how a product or process can better respond to people’s needs." data-zh="我畢業於東吳大學企業管理學系。求學與工作過程中，我逐漸對商業決策背後的事情產生興趣：系統如何運作、資訊如何流動，以及產品或流程如何更貼近使用者需求。">I studied Business Administration at Soochow University. Along the way, I became curious about what happens behind business decisions: how systems work, how information moves, and how a product or process can better respond to people’s needs.</p>
+            <p data-en="Experiences in technology recruitment, a financial-industry IT training program, and technology consulting have given me different ways to look at the same challenge. I enjoy clarifying requirements, understanding workflows, organizing information, and helping teams move from discussion to execution." data-zh="科技人才招募、金融業資訊培訓，以及科技顧問工作的經驗，讓我學會從不同角度理解問題。我喜歡釐清需求、理解流程、整理資訊，也樂於協助團隊把討論逐步轉化為可執行的工作。">Experiences in technology recruitment, a financial-industry IT training program, and technology consulting have given me different ways to look at the same challenge. I enjoy clarifying requirements, understanding workflows, organizing information, and helping teams move from discussion to execution.</p>
+            <p data-en="I’m continuing to explore the space between business and technology, especially where product thinking, structured problem-solving, and practical implementation meet." data-zh="我仍在持續探索商業與科技之間的交集，特別是產品思維、結構化問題分析與實際執行能夠結合的地方。">I’m continuing to explore the space between business and technology, especially where product thinking, structured problem-solving, and practical implementation meet.</p>
+          </div>
+          <aside class="about-aside">
+            <strong data-en="What I keep coming back to" data-zh="我持續關注的事情">What I keep coming back to</strong>
+            <p data-en="Understanding the real problem before jumping to a solution. Making information clear. Connecting people, processes, and technology." data-zh="在提出解法前先理解真正的問題；讓資訊更清楚；連結人、流程與科技。">Understanding the real problem before jumping to a solution. Making information clear. Connecting people, processes, and technology.</p>
+            <div class="audience-links">
+              <a href="#experience" data-en="For recruiters ↗" data-zh="給招募者 ↗">For recruiters ↗</a>
+              <a href="#education" data-en="For admissions ↗" data-zh="給招生委員 ↗">For admissions ↗</a>
             </div>
-    </div>
-</header>
+          </aside>
+        </div>
+      </div>
+    </section>
 
-        
-      
-        <!-- 2. Selected Projects -->
-        <section id="projects" class="section">
-            <h2 data-zh="精選專案" data-en="Selected Projects">精選專案</h2>
-            <div id="projectsContent">
-
-                 <div class="project-item">
-                    <h3>Java Training Program</h3>
-                    <p>實際理解系統邏輯與資料流，並練習把技術內容整理成清楚的說明。</p>
-                    <a href="https://eugenielin.github.io/dream-lab-portfolio/" class="project-link" target="_blank">查看專案 →</a>
-                </div>
-                <div class="project-item">
-                    <h3>Tech Recruitment Analytics</h3>
-                    <p>以實習期間的招聘專案為基礎，系統性地分析 SSD/FTL 韌體人才市場，並建立數據驅動的 Sourcing 策略，最終達成 67% 轉化率，遠超行業平均水準。</p>
-                    <a href="https://eugenielin.github.io/Recruitment-Analytics/" class="project-link" target="_blank">查看專案 →</a>
-                </div>
-                <div class="project-item">
-                    <h3>Workflow Clarity Framework</h3>
-                    <p>從實務中流程混亂的經驗出發，整理並建立一套讓工作流程更清楚、比較好對齊的框架。</p>
-                    <a href="https://eugenielin.github.io/workflow-clarity-framework/" class="project-link" target="_blank">查看專案 →</a>
-                </div>
-
-               
-
-                <div class="project-item">
-                    <h3>E-commerce Analysis Project</h3>
-                    <p>以電商為題的專案，透過分析使用者行為與銷售數據，理解影響成效的關鍵因素。</p>
-                    <a href="https://eugenielin.github.io/E-commerce-Side_Project/" class="project-link" target="_blank">查看專案 →</a>
-                </div>
-
-                <div class="project-item">
-                    <h3>Marketing Research - Topologie</h3>
-                    <div class="achievement">完整市場調查與數據分析 (n=158)</div>
-                    <div class="achievement">品牌定位與目標客群鎖定</div>
-                    <div class="achievement">制定完整行銷策略方案</div>
-                    <a href="https://drive.google.com/file/d/1f4jK2NOfIWyv3uRBkm3MTPj9r0lZuW17/view?usp=sharing" class="project-link" target="_blank">查看完整簡報 →</a>
-                </div>
+    <section class="section" id="work">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="section-kicker">02 / SELECTED WORK</div>
+          <div>
+            <h2 data-en="Selected projects." data-zh="精選專案。">Selected projects.</h2>
+            <p class="section-intro" data-en="A selection of projects that reflect how I approach product planning, user and market research, process design, and business analysis." data-zh="從產品規劃、使用者與市場研究，到流程設計及商業分析，呈現我如何理解問題並展開工作。">A selection of projects that reflect how I approach product planning, user and market research, process design, and business analysis.</p>
+          </div>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card featured">
+            <div class="project-top"><span class="project-number">01</span><span class="project-type">PRODUCT PLANNING · TEAM PROJECT</span></div>
+            <h3>Dream Lab</h3>
+            <p data-en="A team-built sleep and dream analysis platform. I focused on product planning, clarifying requirements, mapping user and system workflows, and contributing to selected parts of the implementation. The project helped me connect user needs with practical product and technical decisions." data-zh="以睡眠與夢境分析為主題的團隊平台。我主要參與產品規劃、需求釐清、使用者與系統流程設計，也實際參與部分功能開發。這個專案讓我練習將使用者需求連結到產品與技術決策。">A team-built sleep and dream analysis platform. I focused on product planning, clarifying requirements, mapping user and system workflows, and contributing to selected parts of the implementation. The project helped me connect user needs with practical product and technical decisions.</p>
+            <div class="project-bottom">
+              <div class="tags"><span class="tag">PRODUCT THINKING</span><span class="tag">WORKFLOW DESIGN</span><span class="tag">TEAM DEVELOPMENT</span></div>
+              <a class="project-link" href="https://eugenielin.github.io/dream-lab-portfolio/" target="_blank" rel="noopener noreferrer" data-en="VIEW CASE ↗" data-zh="查看專案 ↗">VIEW CASE ↗</a>
             </div>
-        </section>
-
-        <!-- 3. Skills & Interests -->
-        <section id="skills" class="section">
-            <h2 data-zh="技能" data-en="Skills ">技能</h2>
-            <div class="skills-grid" id="skillsContent">
-                <div class="skill-card">
-                    <h3>產品理解與分析</h3>
-                    <ul>
-                        <li>產品與流程邏輯理解</li>
-                        <li>市場與使用者研究</li>
-                        <li>需求釐清與問題拆解</li>
-                        <li>重點整理與洞察歸納</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <h3>協作與執行</h3>
-                    <ul>
-                        <li>跨部門溝通與對齊</li>
-                        <li>專案進度協調與追蹤</li>
-                        <li>文件整理與支援</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <h3>工具與技術理解</h3>
-                    <ul>
-                        <li>Excel、SPSS、SQL（資料整理與分析）</li>
-                        <li>Java、JavaScript（基礎程式與系統理解）</li>
-                        <li>資料分析與流程梳理</li>
-                    </ul>
-                </div>
+          </article>
+          <article class="project-card">
+            <div class="project-top"><span class="project-number">02</span><span class="project-type">UX · INFORMATION ARCHITECTURE</span></div>
+            <h3>E-commerce Analysis</h3>
+            <p data-en="Compared product-page structures across Shopee, Momo, Amazon, and PChome to examine how product information, reviews, and page flow support consumer decision-making." data-zh="比較 Shopee、Momo、Amazon 與 PChome 的商品頁資訊架構，觀察商品資訊、評論與頁面流程如何影響消費者決策。">Compared product-page structures across Shopee, Momo, Amazon, and PChome to examine how product information, reviews, and page flow support consumer decision-making.</p>
+            <div class="project-bottom">
+              <div class="tags"><span class="tag">USER JOURNEY</span><span class="tag">UX ANALYSIS</span></div>
+              <a class="project-link" href="https://eugenielin.github.io/E-commerce-Side_Project/" target="_blank" rel="noopener noreferrer" data-en="VIEW PROJECT ↗" data-zh="查看專案 ↗">VIEW PROJECT ↗</a>
             </div>
-        </section>
-
-        <!-- 3.5 Certifications -->
-        <section id="certifications" class="section">
-            <h2 data-zh="證照" data-en="Certifications">證照</h2>
-            <div id="certificationsContent">
-                <div class="project-item">
-                    <h3>Microsoft Azure AI Fundamentals (AI-900)</h3>
-                    <p>通過微軟 Azure AI 基礎認證，具備 AI 與機器學習的基礎概念理解</p>
-                    <a href="https://drive.google.com/file/d/1cbHsO5ElJZOEtKzCdRXkHnMPDwsMuH1l/view?usp=sharing" class="project-link" target="_blank">查看證照 →</a>
-                </div>
+          </article>
+          <article class="project-card">
+            <div class="project-top"><span class="project-number">03</span><span class="project-type">MARKET RESEARCH · BRAND STRATEGY</span></div>
+            <h3>Topologie</h3>
+            <p data-en="A marketing research project based on 158 survey responses, covering consumer insights, brand positioning, target audience definition, and marketing recommendations." data-zh="以 158 份問卷為基礎的行銷研究，涵蓋消費者洞察、品牌定位、目標客群分析與行銷策略建議。">A marketing research project based on 158 survey responses, covering consumer insights, brand positioning, target audience definition, and marketing recommendations.</p>
+            <div class="project-bottom">
+              <div class="tags"><span class="tag">CONSUMER INSIGHTS</span><span class="tag">MARKETING</span></div>
+              <a class="project-link" href="https://drive.google.com/file/d/1f4jK2NOfIWyv3uRBkm3MTPj9r0lZuW17/view?usp=sharing" target="_blank" rel="noopener noreferrer" data-en="VIEW PRESENTATION ↗" data-zh="查看簡報 ↗">VIEW PRESENTATION ↗</a>
             </div>
-        </section>
-
-        <!-- 4. Experience / Activities -->
-        <section id="experience" class="section">
-            <h2 data-zh="經驗與活動" data-en="Experience & Activities">經驗與活動</h2>
-            <div id="experienceContent">
-                <div class="project-item">
-                    <h3>Event Coordinator & Host in Dance Club</h3>
-                    <div class="achievement">主導學期成果發表會並擔任總召及主持，總人數達近千人</div>
-                    <div class="achievement">策劃執行 14 場活動，社員人數成長 30%</div>
-                    <div class="achievement">參與社群媒體經營、宣傳片劇本構想及影片剪輯</div>
-                    <a href="https://drive.google.com/file/d/1iqamWACRLPKUzm2kW3MZhrju1MR4NHkw/view" class="project-link" target="_blank">查看成果發表會 →</a>
-                    <a href="https://www.youtube.com/playlist?list=PLX93D3YeFRHqPjkZWLmiNbUYUd-8C3qGC" class="project-link" target="_blank">YouTube 播放清單 →</a>
-                </div>
-
-                <div class="project-item">
-                    <h3>Reels Production</h3>
-                    <p>協助品牌合作的 Reels 製作，從腳本發想、拍攝到社群互動全程參與</p>
-                    <a href="https://www.instagram.com/reel/DIjAGk6yoEM/?igsh=MXBlN3V0andxOGluYg%3D%3D" class="project-link" target="_blank">觀看作品 →</a>
-                </div>
+          </article>
+          <article class="project-card">
+            <div class="project-top"><span class="project-number">04</span><span class="project-type">BUSINESS ANALYSIS · RECRUITMENT</span></div>
+            <h3>Tech Recruitment Analytics</h3>
+            <p data-en="Analyzed a specialized SSD/FTL firmware talent market during my technology recruitment internship and organized sourcing activity and conversion data to support a more focused search strategy." data-zh="以科技招募實習期間的 SSD／FTL 韌體人才市場為研究情境，整理人才搜尋與轉換資料，協助建立更聚焦的 Sourcing 策略。">Analyzed a specialized SSD/FTL firmware talent market during my technology recruitment internship and organized sourcing activity and conversion data to support a more focused search strategy.</p>
+            <div class="project-bottom">
+              <div class="tags"><span class="tag">DATA ANALYSIS</span><span class="tag">MARKET MAPPING</span></div>
+              <a class="project-link" href="https://eugenielin.github.io/Recruitment-Analytics/" target="_blank" rel="noopener noreferrer" data-en="VIEW PROJECT ↗" data-zh="查看專案 ↗">VIEW PROJECT ↗</a>
             </div>
-        </section>
-
-        <!-- 5. Education -->
-        <section id="education" class="section">
-            <h2 data-zh="教育" data-en="Education">學歷</h2>
-            <div id="educationContent">
-                <div class="education-item">
-                    <h3>東吳大學</h3>
-                    <div class="degree">企業管理學系，大學畢業</div>
-                    <div class="date">台北，台灣 | 2021年8月 - 2025年6月</div>
-                    <ul>
-                        <li>GPA: 3.9/4.0</li>
-                        <li>相關課程：專案管理、行銷管理、消費者行為、人力資源</li>
-                    </ul>
-                </div>
-
-                <div class="education-item">
-                    <h3>IESEG管理學院</h3>
-                    <div class="degree">交換學程，企業管理</div>
-                    <div class="date">里爾，法國 | 2024年8月 - 2024年12月</div>
-                    <ul>
-                        <li>完成證明：英語授課課程</li>
-                    </ul>
-                </div>
-
-                <div class="education-item">
-                    <h3>加州大學洛杉磯分校</h3>
-                    <div class="degree">暑期課程，企業管理</div>
-                    <div class="date">洛杉磯，美國 | 2023年6月 - 2023年8月</div>
-                </div>
+          </article>
+          <article class="project-card">
+            <div class="project-top"><span class="project-number">05</span><span class="project-type">PROCESS DESIGN</span></div>
+            <h3>Workflow Clarity Framework</h3>
+            <p data-en="A practical framework developed from observing unclear handoffs and fragmented information, with a focus on making responsibilities, updates, and next steps easier to follow." data-zh="從工作交接與資訊分散的實際情境出發，整理一套流程框架，讓任務責任、進度更新與後續行動更容易被理解與追蹤。">A practical framework developed from observing unclear handoffs and fragmented information, with a focus on making responsibilities, updates, and next steps easier to follow.</p>
+            <div class="project-bottom">
+              <div class="tags"><span class="tag">PROCESS MAPPING</span><span class="tag">COMMUNICATION</span></div>
+              <a class="project-link" href="https://eugenielin.github.io/workflow-clarity-framework/" target="_blank" rel="noopener noreferrer" data-en="VIEW PROJECT ↗" data-zh="查看專案 ↗">VIEW PROJECT ↗</a>
             </div>
-        </section>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        <!-- 6. Contact -->
-        <section id="contact" class="section">
-            <h2 data-zh="聯絡我" data-en="Contact Me">聯絡我</h2>
-            <div class="contact-info">
-                <a href="mailto:uuclin25@gmail.com" class="contact-item">
-                    <span>📧</span>
-                    <span>uuclin25@gmail.com</span>
-                </a>
-                <a href="tel:+886984293471" class="contact-item">
-                    <span>📱</span>
-                    <span>+886 984-293-471</span>
-                </a>
+    <section class="section" id="experience">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="section-kicker">03 / EXPERIENCE</div>
+          <div>
+            <h2 data-en="Where I’ve been." data-zh="一路走來的經歷。">Where I’ve been.</h2>
+            <p class="section-intro" data-en="Experiences across consulting, financial technology training, and technology recruitment." data-zh="累積於顧問服務、金融科技培訓與科技人才招募的不同經驗。">Experiences across consulting, financial technology training, and technology recruitment.</p>
+          </div>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-date" data-en="MAR 2026 — PRESENT" data-zh="2026 年 3 月 — 至今">MAR 2026 — PRESENT</div>
+            <div class="timeline-content">
+              <h3>Deloitte Taiwan</h3>
+              <div class="role" data-en="Cyber Consultant · Technology & Transformation" data-zh="Cyber Consultant · Technology & Transformation">Cyber Consultant · Technology & Transformation</div>
+              <ul>
+                <li data-en="Support enterprise IT governance and cybersecurity engagements, including ISO 27001 implementation, maintenance, and scope expansion." data-zh="協助企業 IT 治理與資訊安全專案，包含 ISO 27001 導入、維護及範圍擴展。">Support enterprise IT governance and cybersecurity engagements, including ISO 27001 implementation, maintenance, and scope expansion.</li>
+                <li data-en="Assist with stakeholder interviews, evidence reviews, control assessments, documentation, and project progress tracking." data-zh="協助利害關係人訪談、佐證資料檢視、控制措施評估、文件整理與專案進度追蹤。">Assist with stakeholder interviews, evidence reviews, control assessments, documentation, and project progress tracking.</li>
+              </ul>
             </div>
-        </section>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-date" data-en="JUL 2025 — NOV 2025" data-zh="2025 年 7 月 — 2025 年 11 月">JUL 2025 — NOV 2025</div>
+            <div class="timeline-content">
+              <h3>Cathay Financial Holdings</h3>
+              <div class="role" data-en="IT Talent Training Program · Cathay Life" data-zh="資訊人才培訓計畫 · 國泰人壽">IT Talent Training Program · Cathay Life</div>
+              <ul>
+                <li data-en="Selected for a 15-week intensive program with a 10% acceptance rate; completed foundational training in SQL, Java, JavaScript, Spring Boot, and Vue.js." data-zh="入選錄取率約 10% 的 15 週密集培訓計畫，完成 SQL、Java、JavaScript、Spring Boot 與 Vue.js 等基礎訓練。">Selected for a 15-week intensive program with a 10% acceptance rate; completed foundational training in SQL, Java, JavaScript, Spring Boot, and Vue.js.</li>
+                <li data-en="Collaborated on a digital insurance capstone, contributing to business requirement clarification and workflow design." data-zh="參與數位保險團隊專題，協助釐清商業需求並規劃相關作業流程。">Collaborated on a digital insurance capstone, contributing to business requirement clarification and workflow design.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-date" data-en="MAR 2024 — AUG 2024" data-zh="2024 年 3 月 — 2024 年 8 月">MAR 2024 — AUG 2024</div>
+            <div class="timeline-content">
+              <h3>HRnetOne</h3>
+              <div class="role" data-en="Management Trainee · Technology Recruitment Team" data-zh="管理培訓生 · 科技人才招募團隊">Management Trainee · Technology Recruitment Team</div>
+              <ul>
+                <li data-en="Coordinated six technology recruitment projects within four months, contributing to over NT$1 million in revenue." data-zh="四個月內協調六項科技人才招募專案，協助創造超過新台幣 100 萬元營收。">Coordinated six technology recruitment projects within four months, contributing to over NT$1 million in revenue.</li>
+                <li data-en="Tracked more than 100 candidate and client requirement records using Excel and Notion, supporting project visibility and follow-up." data-zh="使用 Excel 與 Notion 管理超過 100 筆候選人及客戶需求資料，支援專案追蹤與資訊整理。">Tracked more than 100 candidate and client requirement records using Excel and Notion, supporting project visibility and follow-up.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        <footer>
-            <p>© 2026 Eugenie Lin.</p>
-            <p>Thank you for taking the time to view my portfolio.</p>
-        </footer>
-    </div>
+    <section class="section" id="skills">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="section-kicker">04 / CAPABILITIES</div>
+          <div>
+            <h2 data-en="How I contribute." data-zh="我的能力與工具。">How I contribute.</h2>
+            <p class="section-intro" data-en="A combination of business understanding, structured execution, and foundational technical literacy." data-zh="結合商業理解、結構化執行能力，以及基礎技術知識。">A combination of business understanding, structured execution, and foundational technical literacy.</p>
+          </div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill">
+            <h3 data-en="Business & Product" data-zh="商業與產品">Business & Product</h3>
+            <p data-en="Clarifying business needs, understanding user journeys, mapping processes, and turning observations into structured recommendations." data-zh="釐清商業需求、理解使用者旅程、梳理流程，並將觀察轉化為有架構的建議。">Clarifying business needs, understanding user journeys, mapping processes, and turning observations into structured recommendations.</p>
+            <div class="tools">Business Analysis · Product Planning · Market Research</div>
+          </div>
+          <div class="skill">
+            <h3 data-en="Project & Collaboration" data-zh="專案與協作">Project & Collaboration</h3>
+            <p data-en="Organizing information, coordinating stakeholders, tracking progress, documenting decisions, and supporting team execution." data-zh="整理資訊、協調利害關係人、追蹤進度、記錄決策，並支援團隊執行。">Organizing information, coordinating stakeholders, tracking progress, documenting decisions, and supporting team execution.</p>
+            <div class="tools">Stakeholder Coordination · Project Tracking · Documentation</div>
+          </div>
+          <div class="skill">
+            <h3 data-en="Technology & Tools" data-zh="科技與工具">Technology & Tools</h3>
+            <p data-en="Foundational understanding of application development, data, and system workflows, supported by hands-on technical training." data-zh="透過實作培訓建立應用程式開發、資料與系統流程的基礎理解。">Foundational understanding of application development, data, and system workflows, supported by hands-on technical training.</p>
+            <div class="tools">SQL · Java · JavaScript · Spring Boot · Vue.js<br>Excel · SPSS · Notion</div>
+          </div>
+        </div>
+        <div style="margin-top:48px; max-width:760px">
+          <div class="section-kicker" data-en="CERTIFICATIONS & DEVELOPMENT" data-zh="證照與持續進修">CERTIFICATIONS & DEVELOPMENT</div>
+          <div class="cert-row"><span>Microsoft Azure AI Fundamentals (AI-900)</span><span data-en="Earned" data-zh="已取得">Earned</span></div>
+          <div class="cert-row"><span>ISO/IEC 27017 & ISO/IEC 27018</span><span data-en="Exams completed · Results pending" data-zh="已完成考試 · 等待結果">Exams completed · Results pending</span></div>
+        </div>
+      </div>
+    </section>
 
-    <script>
-        let currentLang = 'zh';
-        
-        const content = {
-            zh: {
-                about: `<p style="font-size: 1.1em; margin-top: 20px; line-height: 1.8;">我是一位企管系的應屆畢業生，具備完整工程訓練與實務專案經驗，擅長在資訊複雜或跨部門合作的情境中，快速釐清問題、整理重點，並協助團隊將想法落實為可執行的行動。</p><p style="font-size: 1.1em; margin-top: 15px; line-height: 1.8;">過去在 HRnetOne 與國泰資訊培訓班中，我多半扮演「整合者」的角色，負責整理需求、追蹤進度、對齊不同利害關係人的理解，並透過 Excel、Notion 等工具提升流程透明度與執行效率。</p><p style="font-size: 1.1em; margin-top: 15px; line-height: 1.8;">我對資料背後的邏輯、流程是否順暢，以及決策如何影響使用者與營運結果特別有興趣，也樂於在實作中學習新工具與新領域。</p>`,
-                projects: `<div class="project-item"><h3>Java Training Program</h3><p>實際理解系統邏輯與資料流，並練習把技術內容整理成清楚的筆記與說明。</p><a href="https://eugenielin.github.io/dream-lab-portfolio/" class="project-link" target="_blank">查看專案 →</a></div><div class="project-item"><h3>Tech Recruitment Analytics</h3><p>以實習期間的招聘專案為基礎，系統性地分析 SSD/FTL 韌體人才市場，並建立數據驅動的 Sourcing 策略，最終達成 67% 轉化率，遠超行業平均水準。</p><a href="https://eugenielin.github.io/Recruitment-Analytics/" class="project-link" target="_blank">查看專案 →</a></div><div class="project-item"><h3>Workflow Clarity Framework</h3><p>從實務中流程混亂的經驗出發，整理並建立一套讓工作流程更清楚、比較好對齊的框架。</p><a href="https://eugenielin.github.io/workflow-clarity-framework/" class="project-link" target="_blank">查看專案 →</a></div><div class="project-item"><h3>E-commerce Analysis Project</h3><p>以電商情境為題的側專案，透過分析使用者行為與銷售數據，理解影響成效的關鍵因素。</p><a href="https://eugenielin.github.io/E-commerce-Side_Project/" class="project-link" target="_blank">查看專案 →</a></div><div class="project-item"><h3>Marketing Research - Topologie</h3><div class="achievement">完整市場調查與數據分析 (n=158)</div><div class="achievement">品牌定位與目標客群鎖定</div><div class="achievement">制定完整行銷策略方案</div><a href="https://drive.google.com/file/d/1nAo4BT2tOFVAymdFxfE_ZTHi8gnmuUB-/view?usp=sharing" class="project-link" target="_blank">查看完整簡報 →</a></div>`,
-                skills: `<div class="skill-card"><h3>產品理解與分析</h3><ul><li>產品與流程邏輯理解</li><li>市場與使用者研究</li><li>需求釐清與問題拆解</li><li>重點整理與洞察歸納</li></ul></div><div class="skill-card"><h3>協作與執行</h3><ul><li>跨部門溝通與對齊</li><li>專案進度協調與追蹤</li><li>文件整理與支援</li></ul></div><div class="skill-card"><h3>工具與技術理解</h3><ul><li>Excel、SPSS、SQL（資料整理與分析）</li><li>Java、JavaScript（基礎程式與系統理解）</li><li>資料分析與流程梳理</li></ul></div>`,
-                certifications: `<div class="project-item"><h3>Microsoft Azure AI Fundamentals (AI-900)</h3><p>通過微軟 Azure AI 基礎認證，具備 AI 與機器學習的基礎概念理解</p><a href="https://drive.google.com/file/d/1cbHsO5ElJZOEtKzCdRXkHnMPDwsMuH1l/view?usp=sharing" class="project-link" target="_blank">查看證照 →</a></div>`,
-                experience: `<div class="project-item"><h3>Event Coordinator & Host in Dance Club</h3><div class="achievement">主導學期成果發表會並擔任總召及主持，總人數達近千人</div><div class="achievement">策劃執行 14 場活動，社員人數成長 30%</div><div class="achievement">參與社群媒體經營、宣傳片劇本構想及影片剪輯</div><a href="https://drive.google.com/file/d/1iqamWACRLPKUzm2kW3MZhrju1MR4NHkw/view" class="project-link" target="_blank">查看成果發表會 →</a><a href="https://www.youtube.com/playlist?list=PLX93D3YeFRHqPjkZWLmiNbUYUd-8C3qGC" class="project-link" target="_blank">YouTube 播放清單 →</a></div><div class="project-item"><h3>Reels Production</h3><p>協助品牌合作的 Reels 製作，從腳本發想、拍攝到社群互動全程參與</p><a href="https://www.instagram.com/reel/DIjAGk6yoEM/?igsh=MXBlN3V0andxOGluYg%3D%3D" class="project-link" target="_blank">觀看作品 →</a></div>`,
-                education: `<div class="education-item"><h3>東吳大學</h3><div class="degree">企業管理學系大學畢業</div><div class="date">台北，台灣 | 2021年8月 - 2025年6月</div><ul><li>GPA: 3.9/4.0</li><li>相關課程：專案管理、行銷管理、消費者行為、人力資源</li></ul></div><div class="education-item"><h3>IESEG管理學院</h3><div class="degree">交換學程，企業管理</div><div class="date">里爾，法國 | 2024年8月 - 2024年12月</div><ul><li>完成證明：英語授課課程</li></ul></div><div class="education-item"><h3>加州大學洛杉磯分校</h3><div class="degree">暑期課程，企業管理</div><div class="date">洛杉磯，美國 | 2023年6月 - 2023年8月</div></div>`
-            },
-            en: {
-                about: `<p style="font-size: 1.1em; margin-top: 20px; line-height: 1.8;">I'm a recent Business Administration graduate with hands-on engineering training and project experience. I'm comfortable working in situations where information is messy or teams come from different backgrounds, and I usually focus on clarifying the problem, organizing key points, and helping turn ideas into something that can actually be executed.</p><p style="font-size: 1.1em; margin-top: 15px; line-height: 1.8;">During my time at HRnetOne and the Cathay Financial Holdings IT training program, I often took on a coordinating role—organizing requirements, tracking progress, and aligning expectations across different stakeholders. I used tools like Excel and Notion to make workflows more visible and keep projects moving.</p><p style="font-size: 1.1em; margin-top: 15px; line-height: 1.8;">I'm especially interested in how data, processes, and decisions connect to real user and business outcomes, and I enjoy learning new tools and domains through hands-on work.</p>`,
-                projects: `<div class="project-item"><h3>Java Training Program</h3><p>A Java training project where I worked through system logic and data flow, and practiced organizing technical information into clear notes.</p><a href="https://eugenielin.github.io/dream-lab-portfolio/" class="project-link" target="_blank">View Project →</a></div><div class="project-item"><h3>Tech Recruitment Analytics</h3><p>A recruiting analytics project from my internship, where I mapped an extremely scarce SSD/FTL firmware talent market and built a data-driven sourcing strategy that achieved 67% conversion — well above the industry average.</p><a href="https://eugenielin.github.io/Recruitment-Analytics/" class="project-link" target="_blank">View Project →</a></div><div class="project-item"><h3>Workflow Clarity Framework</h3><p>A side project built from my experience working in messy workflows, focusing on how to make processes clearer and easier to align.</p><a href="https://eugenielin.github.io/workflow-clarity-framework/" class="project-link" target="_blank">View Project →</a></div><div class="project-item"><h3>E-commerce Analysis Project</h3><p>An e-commerce side project where I analyzed user behavior and sales data to better understand what drives performance.</p><a href="https://eugenielin.github.io/E-commerce-Side_Project/" class="project-link" target="_blank">View Project →</a></div><div class="project-item"><h3>Marketing Research — Topologie Phone Strap</h3><div class="achievement">Conducted end-to-end market research and data analysis (n = 158)</div><div class="achievement">Defined brand positioning and target audience</div><div class="achievement">Developed a complete marketing strategy proposal</div><a href="https://drive.google.com/file/d/1nAo4BT2tOFVAymdFxfE_ZTHi8gnmuUB-/view?usp=sharing" class="project-link" target="_blank">View Full Presentation →</a></div>`,
-                skills: `<div class="skill-card"><h3>Product & Analysis</h3><ul><li>Market Research</li><li>Requirement Clarification</li><li>Insight Summarization</li></ul></div><div class="skill-card"><h3>Collaboration & Execution</h3><ul><li>Cross-functional Communication</li><li>Project Coordination</li><li>Documentation Support</li></ul></div><div class="skill-card"><h3>Tools & Technical Understanding</h3><ul><li>Excel, SPSS, SQL</li><li>Java, JavaScript</li><li>Data Analysis</li></ul></div>`,
-                certifications: `<div class="project-item"><h3>Microsoft Azure AI Fundamentals (AI-900)</h3><p>Certified in Microsoft Azure AI fundamentals with a solid understanding of AI and machine learning concepts</p><a href="https://drive.google.com/file/d/1cbHsO5ElJZOEtKzCdRXkHnMPDwsMuH1l/view?usp=sharing" class="project-link" target="_blank">View Certificate →</a></div>`,
-                experience: `<div class="project-item"><h3>Event Coordinator & Host — Dance Club</h3><div class="achievement">Led the semester showcase as project lead and host, with nearly 1,000 attendees</div><div class="achievement">Planned and executed 14 events, contributing to a 30% growth in club membership</div><div class="achievement">Participated in social media management, promo video scripting, and video editing</div><a href="https://drive.google.com/file/d/1iqamWACRLPKUzm2kW3MZhrju1MR4NHkw/view" class="project-link" target="_blank">View Event →</a><a href="https://www.youtube.com/playlist?list=PLX93D3YeFRHqPjkZWLmiNbUYUd-8C3qGC" class="project-link" target="_blank">YouTube Playlist →</a></div><div class="project-item"><h3>Reels Production</h3><p>Supported branded Reels production, involved in scripting, filming, and social engagement</p><a href="https://www.instagram.com/reel/DIjAGk6yoEM/?igsh=MXBlN3V0andxOGluYg%3D%3D" class="project-link" target="_blank">Watch →</a></div>`,
-                education: `<div class="education-item"><h3>Soochow University</h3><div class="degree">B.A in Business Administration, College of Commerce</div><div class="date">Taipei, Taiwan | Sep. 2021 - Jun. 2025</div><ul><li>GPA: 3.9/4.0</li><li>Relevant Coursework: Project Management, Marketing Management, Consumer Behavior, Human Resources</li></ul></div><div class="education-item"><h3>IESEG School of Management</h3><div class="degree">Exchange Program, Business Administration</div><div class="date">Lille, France | Aug. 2024 - Jan. 2025</div><ul><li>Certificate of Accomplishment: English Taught Program</li></ul></div><div class="education-item"><h3>University of California, Los Angeles</h3><div class="degree">Summer Program, Business Administration</div><div class="date">Los Angeles, United States</div></div>`
-            }
-        };
+    <section class="section" id="education">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="section-kicker">05 / EDUCATION</div>
+          <div>
+            <h2 data-en="Where I learned." data-zh="學習與探索。">Where I learned.</h2>
+            <p class="section-intro" data-en="Business studies shaped my foundation; international programs broadened the way I see people, markets, and ideas." data-zh="商管訓練建立我的基礎，海外學習經驗則拓展了我理解人、市場與想法的視角。">Business studies shaped my foundation; international programs broadened the way I see people, markets, and ideas.</p>
+          </div>
+        </div>
+        <div class="education-grid">
+          <article class="education-card">
+            <h3>Soochow University</h3>
+            <p data-en="B.A. in Business Administration" data-zh="企業管理學系 學士">B.A. in Business Administration</p>
+            <p data-en="Taipei, Taiwan · Sep 2021 – Jun 2025" data-zh="台灣台北 · 2021 年 9 月 — 2025 年 6 月">Taipei, Taiwan · Sep 2021 – Jun 2025</p>
+            <p class="gpa">GPA 3.9 / 4.0</p>
+          </article>
+          <article class="education-card">
+            <h3>IÉSEG School of Management</h3>
+            <p data-en="Exchange Program · Business Administration" data-zh="交換學生 · 企業管理">Exchange Program · Business Administration</p>
+            <p data-en="Lille, France · Aug 2024 – Jan 2025" data-zh="法國里爾 · 2024 年 8 月 — 2025 年 1 月">Lille, France · Aug 2024 – Jan 2025</p>
+            <p class="gpa" data-en="English-taught program" data-zh="全英語授課課程">English-taught program</p>
+          </article>
+          <article class="education-card">
+            <h3>UCLA</h3>
+            <p data-en="Summer Program" data-zh="暑期課程">Summer Program</p>
+            <p data-en="Los Angeles, USA · Jun – Aug 2023" data-zh="美國洛杉磯 · 2023 年 6 月 — 8 月">Los Angeles, USA · Jun – Aug 2023</p>
+            <p class="gpa" data-en="Business studies" data-zh="商業相關課程">Business studies</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        document.getElementById('langSwitch').addEventListener('click', () => {
-    // 1. 切換語言狀態
-    currentLang = currentLang === 'zh' ? 'en' : 'zh';
-    
-    // 2. 更新按鈕文字
-    const switchBtn = document.getElementById('langSwitch');
-    switchBtn.textContent = currentLang === 'zh' ? 'English' : '中文';
+    <section class="section" id="beyond">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="section-kicker">06 / BEYOND WORK</div>
+          <div>
+            <h2 data-en="Outside the brief." data-zh="工作之外的我。">Outside the brief.</h2>
+            <p class="section-intro" data-en="Some of the experiences that have taught me to coordinate people, communicate ideas, and stay curious." data-zh="這些經驗讓我練習協調團隊、傳達想法，也持續保持好奇。">Some of the experiences that have taught me to coordinate people, communicate ideas, and stay curious.</p>
+          </div>
+        </div>
+        <div class="extras-grid">
+          <article class="extra">
+            <h3>Dance Club · Event Coordination</h3>
+            <p data-en="Coordinated 14 student events and served as the lead organizer and host for a semester showcase attended by nearly 1,000 people. Also contributed to social media and promotional video production." data-zh="策劃執行 14 場社團活動，並擔任學期成果發表會總召與主持，活動參與人數近千人；也參與社群經營及宣傳影片製作。">Coordinated 14 student events and served as the lead organizer and host for a semester showcase attended by nearly 1,000 people. Also contributed to social media and promotional video production.</p>
+            <a class="project-link" href="https://www.youtube.com/playlist?list=PLX93D3YeFRHqPjkZWLmiNbUYUd-8C3qGC" target="_blank" rel="noopener noreferrer" data-en="WATCH EVENT RECAP ↗" data-zh="觀看活動紀錄 ↗">WATCH EVENT RECAP ↗</a>
+          </article>
+          <article class="extra">
+            <h3>Reels Production</h3>
+            <p data-en="Took part in branded short-form video production, from brainstorming and scripting to filming and social content." data-zh="參與品牌合作短影音製作，從發想、腳本規劃到拍攝與社群內容皆有參與。">Took part in branded short-form video production, from brainstorming and scripting to filming and social content.</p>
+            <a class="project-link" href="https://www.instagram.com/reel/DIjAGk6yoEM/?igsh=MXBlN3V0andxOGluYg%3D%3D" target="_blank" rel="noopener noreferrer" data-en="WATCH REEL ↗" data-zh="觀看作品 ↗">WATCH REEL ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    // 3. 更新所有帶有 data-zh / data-en 的標題與導覽文字
-    // 包含：導覽連結、所有 H2 標題、聯絡我標題
-    document.querySelectorAll('[data-zh]').forEach(el => {
-        const translation = el.getAttribute(`data-${currentLang}`);
-        if (translation) {
-        // 修改這裡：從 el.textContent 改為 el.innerHTML
-        el.innerHTML = translation; 
-    }
-    });
+    <section class="contact-section" id="contact">
+      <div class="shell contact-grid">
+        <div>
+          <div class="section-kicker">07 / CONTACT</div>
+          <h2 data-en="Let’s connect." data-zh="保持聯繫。">Let’s connect.</h2>
+          <p data-en="Always happy to connect with people working across business, technology, and product—or simply exchange ideas." data-zh="期待認識在商業、科技與產品領域工作的夥伴，也歡迎交流想法。">Always happy to connect with people working across business, technology, and product—or simply exchange ideas.</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:uuclin25@gmail.com">uuclin25@gmail.com ↗</a>
+          <a href="tel:+886984293471">+886 984-293-471</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    // 4. 定義內容映射表 (Content Key -> HTML ID)
-    const idMap = {
-    'about': 'aboutContent',
-    'projects': 'projectsContent',
-    'skills': 'skillsContent',
-    'certifications': 'certificationsContent', 
-    'experience': 'experienceContent',
-    'education': 'educationContent'
-};
+  <footer class="shell">
+    <span>© <span id="year"></span> EUGENIE LIN</span>
+    <span data-en="BUILT WITH CURIOSITY · TAIPEI, TAIWAN" data-zh="保持好奇 · 台灣台北">BUILT WITH CURIOSITY · TAIPEI, TAIWAN</span>
+  </footer>
 
-    // 5. 執行大區塊內容替換
-    for (const [key, id] of Object.entries(idMap)) {
-        const targetElement = document.getElementById(id);
-        const newData = content[currentLang][key];
+  <script>
+    (function () {
+      const langButton = document.getElementById("langSwitch");
+      const menuButton = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+      let language = "en";
 
-        if (targetElement && newData) {
-            // 加入淡入過渡效果
-            targetElement.style.opacity = '0';
-            setTimeout(() => {
-                targetElement.innerHTML = newData;
-                targetElement.style.opacity = '1';
-                targetElement.style.transition = 'opacity 0.3s ease';
-            }, 150);
-        }
-    }
-});
-
-        window.addEventListener('scroll', () => {
-            const h = document.documentElement;
-            const st = h.scrollTop || document.body.scrollTop;
-            const sh = h.scrollHeight || document.body.scrollHeight;
-            const percent = st / (sh - h.clientHeight) * 100;
-            document.getElementById('scrollIndicator').style.width = percent + '%';
+      function setLanguage(nextLanguage) {
+        language = nextLanguage;
+        document.documentElement.lang = language === "en" ? "en" : "zh-TW";
+        document.querySelectorAll("[data-en][data-zh]").forEach((element) => {
+          element.textContent = element.dataset[language];
         });
+        langButton.textContent = language === "en" ? "中文" : "English";
+        langButton.setAttribute("aria-label", language === "en" ? "Switch to Chinese" : "切換至英文");
+      }
 
-        let clickCount = 0;
-        document.getElementById('profileImg').addEventListener('click', () => {
-            clickCount++;
-            if (clickCount === 3) {
-                alert('🎉 你發現了彩蛋!感謝你的關注 💙');
-                clickCount = 0;
-            }
+      langButton.addEventListener("click", () => {
+        setLanguage(language === "en" ? "zh" : "en");
+      });
+
+      menuButton.addEventListener("click", () => {
+        const isOpen = navLinks.classList.toggle("open");
+        menuButton.textContent = isOpen ? "×" : "☰";
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+      });
+
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("open");
+          menuButton.textContent = "☰";
+          menuButton.setAttribute("aria-expanded", "false");
         });
+      });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
-            section.style.transition = 'all 0.6s ease';
-            observer.observe(section);
-        });
-        // 漢堡選單開關邏輯
-    const menuToggle = document.getElementById('mobile-menu');
-    const navLinks = document.getElementById('navLinks');
-
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        // 切換圖示：☰ 變成 ✕
-        menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-    });
-
-    // 點擊連結後自動收起選單 (手機版 UX 優化)
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            menuToggle.textContent = '☰';
-        });
-    });
-    </script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+      setLanguage("en");
+    })();
+  </script>
 </body>
 </html>
